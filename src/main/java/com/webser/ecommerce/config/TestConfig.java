@@ -1,15 +1,9 @@
 package com.webser.ecommerce.config;
 
 
-import com.webser.ecommerce.model.Category;
-import com.webser.ecommerce.model.Order;
-import com.webser.ecommerce.model.Product;
-import com.webser.ecommerce.model.User;
+import com.webser.ecommerce.model.*;
 import com.webser.ecommerce.model.enums.OrderStatus;
-import com.webser.ecommerce.repositories.CategoryRepository;
-import com.webser.ecommerce.repositories.OrderRepository;
-import com.webser.ecommerce.repositories.ProductRepository;
-import com.webser.ecommerce.repositories.UserRepository;
+import com.webser.ecommerce.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +27,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -69,5 +66,12 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+
+        OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+        OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+        OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+        OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+
+        orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
     }
 }
