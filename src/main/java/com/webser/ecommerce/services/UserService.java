@@ -2,6 +2,7 @@ package com.webser.ecommerce.services;
 
 import com.webser.ecommerce.model.User;
 import com.webser.ecommerce.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    @Autowired
     private UserRepository userRepository;
 
     public List<User> findAll() {
@@ -20,5 +22,9 @@ public class UserService {
     public User findById(Long id) {
         Optional<User> user = userRepository.findById(id);
         return user.orElse(null);
+    }
+
+    public User insert(User user) {
+        return userRepository.save(user);
     }
 }
