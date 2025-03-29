@@ -59,6 +59,6 @@ A API estará disponível em http://localhost:8080.
 ### 🌍 Deploy no Heroku
 O projeto está implantado no Heroku. Para acessar a API em produção:
 
-🔗 Acesse a API no Heroku
+🔗 https://port-spring-ecommerce-607b1ebdb7b2.herokuapp.com/
 
 
